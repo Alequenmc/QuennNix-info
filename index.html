@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuennNix</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .aurora-bg {
+            background: linear-gradient(135deg, #000000, #0f0f23, #1a0033, #2d1b69, #4c1d95, #6366f1, #06b6d4, #000000);
+            background-size: 400% 400%;
+            animation: aurora 20s ease-in-out infinite;
+        }
+        
+        @keyframes aurora {
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 100% 0%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+        }
+        
+        .glow-purple {
+            box-shadow: 
+                0 0 20px rgba(147, 51, 234, 0.4),
+                0 0 40px rgba(147, 51, 234, 0.2),
+                0 0 80px rgba(147, 51, 234, 0.1);
+        }
+        
+        .glow-cyan {
+            box-shadow: 
+                0 0 20px rgba(6, 182, 212, 0.4),
+                0 0 40px rgba(6, 182, 212, 0.2),
+                0 0 80px rgba(6, 182, 212, 0.1);
+        }
+        
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-3d:hover {
+            transform: rotateY(5deg) rotateX(5deg) translateY(-20px) scale(1.02);
+            box-shadow: 
+                0 30px 60px rgba(147, 51, 234, 0.3),
+                0 0 100px rgba(6, 182, 212, 0.2);
+        }
+        
+        .floating-icon {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(2deg); }
+            50% { transform: translateY(-30px) rotate(0deg); }
+            75% { transform: translateY(-15px) rotate(-2deg); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #9333ea, #06b6d4, #ec4899, #10b981);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientFlow 4s ease-in-out infinite;
+        }
+        
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .glass-morphism {
+            backdrop-filter: blur(25px);
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 0.1), 
+                rgba(255, 255, 255, 0.05));
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        .glass-card {
+            backdrop-filter: blur(20px);
+            background: linear-gradient(145deg, 
+                rgba(20, 20, 40, 0.8), 
+                rgba(40, 20, 60, 0.6));
+            border: 1px solid rgba(147, 51, 234, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.8s;
+        }
+        
+        .glass-card:hover::before {
+            left: 100%;
+        }
+        
+        .snapshot-dropdown {
+            backdrop-filter: blur(30px);
+            background: linear-gradient(145deg, 
+                rgba(20, 20, 40, 0.95), 
+                rgba(40, 20, 60, 0.9));
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            transform: translateY(-20px) scale(0.9);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .snapshot-dropdown.active {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .pulse-ring {
+            animation: pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulseRing {
+            0% { 
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(147, 51, 234, 0.7);
+            }
+            70% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 20px rgba(147, 51, 234, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(147, 51, 234, 0);
+            }
+        }
+        
+        .particle-field {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(147, 51, 234, 0.8), rgba(6, 182, 212, 0.8));
+            animation: particleFloat 12s linear infinite;
+        }
+        
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(110vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-20vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid rgba(147, 51, 234, 0.8);
+            white-space: nowrap;
+            animation: typewriter 4s steps(40) infinite, blink 1s step-end infinite;
+        }
+        
+        @keyframes typewriter {
+            0% { width: 0; }
+            50% { width: 100%; }
+            100% { width: 0; }
+        }
+        
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        
+        .rotate-3d {
+            animation: rotate3d 10s linear infinite;
+        }
+        
+        @keyframes rotate3d {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            25% { transform: rotateX(90deg) rotateY(0deg); }
+            50% { transform: rotateX(90deg) rotateY(90deg); }
+            75% { transform: rotateX(0deg) rotateY(90deg); }
+            100% { transform: rotateX(0deg) rotateY(0deg); }
+        }
+        
+        .bounce-entrance {
+            animation: bounceEntrance 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        @keyframes bounceEntrance {
+            0% { 
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.2) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @keyframes slideInRight {
+            0% {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, 
+                rgba(147, 51, 234, 0.8),
+                rgba(6, 182, 212, 0.8),
+                rgba(236, 72, 153, 0.8)
+            );
+            animation: progressFlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes progressFlow {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+        
+        .notification-bounce {
+            animation: notificationBounce 2s infinite;
+        }
+        
+        @keyframes notificationBounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .hologram {
+            position: relative;
+            background: linear-gradient(45deg, transparent, rgba(147, 51, 234, 0.1), transparent);
+            animation: hologramShimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes hologramShimmer {
+            0%, 100% { 
+                background-position: -200% center;
+                opacity: 0.8;
+            }
+            50% { 
+                background-position: 200% center;
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="aurora-bg text-white min-h-screen relative overflow-x-hidden">
+    <div class="particle-field">
+        <div class="particle" style="width: 6px; height: 6px; left: 5%; animation-delay: 0s;"></div>
+        <div class="particle" style="width: 4px; height: 4px; left: 15%; animation-delay: 2s;"></div>
+        <div class="particle" style="width: 8px; height: 8px; left: 25%; animation-delay: 4s;"></div>
+        <div class="particle" style="width: 5px; height: 5px; left: 35%; animation-delay: 6s;"></div>
+        <div class="particle" style="width: 7px; height: 7px; left: 45%; animation-delay: 8s;"></div>
+        <div class="particle" style="width: 4px; height: 4px; left: 55%; animation-delay: 10s;"></div>
+        <div class="particle" style="width: 6px; height: 6px; left: 65%; animation-delay: 1s;"></div>
+        <div class="particle" style="width: 5px; height: 5px; left: 75%; animation-delay: 3s;"></div>
+        <div class="particle" style="width: 8px; height: 8px; left: 85%; animation-delay: 5s;"></div>
+        <div class="particle" style="width: 4px; height: 4px; left: 95%; animation-delay: 7s;"></div>
+    </div>
+    <nav class="fixed top-0 w-full z-50 glass-morphism border-b border-purple-500 border-opacity-20">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4 slide-in-left">
+                    <div class="w-14 h-14 bg-gradient-to-r from-purple-600  to-blue-500 rounded-3xl flex items-center justify-center pulse-ring">
+                    
+                    </div>
+                    <div>
+                        <span class="text-3xl font-black gradient-text">QuennNix</span>
+                        <div class="text-xs text-cyan-400 font-semibold typewriter">QuennNix aún esta en desarrollo :)</div>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8 slide-in-right">
+                  
+                 
+                    <div class="relative">
+                        <button class="hover:text-purple-400 transition-all duration-300 flex items-center font-semibold group" onclick="toggleSnapshots()">
+                            <i class="fas fa-download mr-2 text-green-400"></i>Snapshots
+                            <div class="notification-bounce w-3 h-3 bg-red-500 rounded-full ml-2 relative">
+                                <div class="absolute inset-0 bg-red-500 rounded-full animate-ping"></div>
+                            </div>
+                            <i class="fas fa-chevron-down ml-2 text-xs transition-transform duration-300 group-hover:rotate-180" id="snapshot-arrow"></i>
+                        </button>
+                        <div class="snapshot-dropdown absolute right-0 top-full mt-4 w-96 rounded-3xl p-6 z-50" id="snapshot-menu">
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-xl font-bold gradient-text">
+                                    <i class="fas fa-history mr-2"></i>Snapshots Recientes
+                                </h3>
+                                <span class="bg-gradient-to-r from-purple-600 to-cyan-600 px-3 py-1 rounded-full text-xs font-bold">Actualizado</span>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div class="glass-card p-4 rounded-2xl hover:bg-purple-900/30 transition-all duration-300 cursor-pointer border-l-4 border-green-400">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-500 rounded-2xl flex items-center justify-center">
+                                                <i class="fas fa-cube text-white"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-white">QuennNix</div>
+                                                <div class="text-xs text-gray-300">Mejora de interfaz</div>
+                                                <div class="text-xs text-purple-400 mt-1">
+                                                    <i class="fas fa-clock mr-1"></i>Hace 3 meses.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col items-end space-y-1">
+                                            <span class="bg-green-500 px-2 py-1 rounded-full text-xs font-bold">ACTIVO</span>
+                                            <span class="text-xs text-green-400">✓ Estable</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="glass-card p-4 rounded-2xl hover:bg-purple-900/30 transition-all duration-300 cursor-pointer border-l-4 border-blue-400">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center">
+                                                <i class="fas fa-video text-white"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-white">Quennvix</div>
+                                                <div class="text-xs text-gray-300">Integracion de ui y chat</div>
+                                                <div class="text-xs text-cyan-400 mt-1">
+                                                    <i class="fas fa-clock mr-1"></i>Hace 2 meses.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col items-end space-y-1">
+                                            <span class="bg-blue-500 px-2 py-1 rounded-full text-xs font-bold">ESTABLE</span>
+                                            <span class="text-xs text-cyan-400">--</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="glass-card p-4 rounded-2xl hover:bg-purple-900/30 transition-all duration-300 cursor-pointer border-l-4 border-orange-400">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-12 h-12 bg-gradient-to-r from-orange-600 to-red-500 rounded-2xl flex items-center justify-center">
+                                                <i class="fas fa-robot text-white"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-white">HypAI</div>
+                                                <div class="text-xs text-gray-300">Diseño mejorado.</div>
+                                                <div class="text-xs text-orange-400 mt-1">
+                                                    <i class="fas fa-clock mr-1"></i>Hace 2 meses.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col items-end space-y-1">
+                                            <span class="bg-orange-500 px-2 py-1 rounded-full text-xs font-bold">BETA</span>
+                                            <span class="text-xs text-orange-400">En testing</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="glass-card p-4 rounded-2xl hover:bg-purple-900/30 transition-all duration-300 cursor-pointer border-l-4 border-green-400">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-12 h-12 bg-gradient-to-r from-green-600 to-teal-500 rounded-2xl flex items-center justify-center">
+                                                <i class="fas fa-graduation-cap text-white"></i>
+                                            </div>
+                                            <div>
+                                                                                                <div class="font-bold text-white">QuennSchool</div>
+                                                <div class="text-xs text-gray-300">Mejoramos ui y añadimos 2 examenes de dos universidades.</div>
+                                                <div class="text-xs text-green-400 mt-1">
+                                                    <i class="fas fa-clock mr-1"></i>Hace 1 semana
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col items-end space-y-1">
+                                            <span class="bg-green-500 px-2 py-1 rounded-full text-xs font-bold">ESTABLE</span>
+                                            <span class="text-xs text-green-400">2U</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6 pt-4 border-t border-purple-900">
+                                <a href="Snapshots.html" class="flex items-center justify-center w-full py-2 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-xl font-bold hover:opacity-90 transition-all duration-300">
+                                    <i class="fas fa-download mr-2"></i>Ver todos los snapshots
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="md:hidden">
+                    <button class="text-white focus:outline-none" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden glass-morphism border-t border-purple-900 hidden" id="mobile-menu">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex flex-col space-y-6">
+                  
+               
+                    
+                    <div>
+                        <button class="hover:text-purple-400 transition-all duration-300 flex items-center font-semibold" onclick="toggleMobileSnapshots()">
+                            <i class="fas fa-download mr-3 text-green-400"></i>Snapshots
+                            <div class="notification-bounce w-3 h-3 bg-red-500 rounded-full ml-2 relative">
+                                <div class="absolute inset-0 bg-red-500 rounded-full animate-ping"></div>
+                            </div>
+                            <i class="fas fa-chevron-down ml-2 text-xs transition-transform duration-300" id="mobile-snapshot-arrow"></i>
+                        </button>
+                        <div class="snapshot-dropdown mt-4 w-full rounded-3xl p-6 hidden" id="mobile-snapshot-menu">
+
+            </div>
+        </div>
+    </nav>
+    <section id="home" class="pt-32 pb-20 px-6 relative overflow-hidden">
+        <div class="container mx-auto">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 slide-in-left">
+                    <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+                        <span class="gradient-text">Bienvenido</span> a QuennNix
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8">
+                        QuennNix es un ecosistema completo que integra herramientas, entretenimiento, productividad y aprendizaje en una plataforma unificada.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#ecosystem" class="px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-xl font-bold hover:opacity-90 transition-all duration-300 glow-purple">
+                            <i class="fas fa-rocket mr-2"></i>Explorar Ecosistema
+                        </a>
+                   
+                    </div>
+                    <div class="mt-10 flex items-center space-x-6">
+                        <div class="flex -space-x-2">
+                            <img src="https://randomuser.me/api/portraits/women/12.jpg" class="w-10 h-10 rounded-full border-2 border-purple-500">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full border-2 border-cyan-500">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" class="w-10 h-10 rounded-full border-2 border-pink-500">
+                        </div>
+                        <div>
+                            <div class="text-sm text-gray-300">Únete a más de <span class="font-bold text-white">45 usuarios</span></div>
+                            <div class="flex items-center mt-1">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span class="text-xs ml-1 text-gray-400">4.2 (39 reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 relative slide-in-right">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="absolute -top-10 -left-10 w-32 h-32 bg-purple-600 rounded-full filter blur-3xl opacity-30"></div>
+                        <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-cyan-600 rounded-full filter blur-3xl opacity-30"></div>
+                        
+                        <div class="relative card-3d glass-card rounded-3xl overflow-hidden border border-purple-500/30">
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-900/30 to-cyan-900/30 z-10"></div>
+                            <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop" class="w-full h-auto">
+                            
+                            <div class="absolute bottom-0 left-0 right-0 z-20 p-6">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-xl">QuennNix Dashboard</h3>
+                                        <p class="text-sm text-gray-300">Control total de tu ecosistema</p>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4 bg-gray-900/50 rounded-xl p-3">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl flex items-center justify-center">
+                                            <i class="fas fa-cog text-white"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="text-sm font-semibold">Desarrollo del ecosistema</div>
+                                            <div class="w-full bg-gray-700 rounded-full h-1.5 mt-1">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="text-xs text-purple-400">9%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="ecosystem" class="py-20 px-6 relative">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-sm font-bold mb-4 glow-purple">
+                    <i class="fas fa-cubes mr-1"></i>ECOSISTEMA INTEGRADO
+                </span>
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-4">
+                    Todo lo que necesitas en <span class="gradient-text">un solo lugar</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    QuennNix combina múltiples plataformas en un ecosistema cohesivo, eliminando la necesidad de cambiar entre aplicaciones.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-card rounded-3xl p-8 card-3d">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-comments text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-center mb-4">QuennChat</h3>
+                    <p class="text-gray-300 text-center mb-6">
+                        Plataforma de mensajería.
+                    </p>
+                    <div class="flex justify-center">
+                        <div class="inline-flex items-center px-4 py-2 bg-purple-900/50 rounded-full text-sm">
+                            <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+                            <span>Alpha 8.45.5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-3xl p-8 card-3d">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-video text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-center mb-4">QuennVix</h3>
+                    <p class="text-gray-300 text-center mb-6">
+                        QuennVix es una plataforma para ver películas con amigos en tiempo real, con eventos interactivos, reacciones en vivo, minijuegos y experiencias personalizadas.
+
+
+                    </p>
+                    <div class="flex justify-center">
+                        <div class="inline-flex items-center px-4 py-2 bg-blue-900/50 rounded-full text-sm">
+                            <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+                            <span>Alpha 29.2.6.4ARMG-25W08A</span>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="glass-card rounded-3xl p-8 card-3d">
+                    <div class="w-16 h-16 bg-gradient-to-r from-orange-600 to-red-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-robot text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-center mb-4">HypAI</h3>
+                   <p class="text-gray-300 text-center mb-6">
+                        Asistente de IA que aprende contigo, automatiza tareas y se integra con todo el ecosistema. Puedes conectarlo a WhatsApp u otras plataformas, entrenar tus propios modelos y personalizarlo al máximo.
+                    </p>
+                    <div class="flex justify-center">
+                        <div class="inline-flex items-center px-4 py-2 bg-orange-900/50 rounded-full text-sm">
+                            <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+                            <span>Alpha 1.1.2</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-3xl p-8 card-3d">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-600 to-teal-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-center mb-4">QuennSchool</h3>
+                    <p class="text-gray-300 text-center mb-6">
+                        QuennSchool es una plataforma educativa inteligente que simula exámenes, resuelve ejercicios y refuerza conocimientos con apoyo de inteligencia artificial. Está diseñada para ayudar a estudiantes preuniversitarios a prepararse de forma personalizada y efectiva para los exámenes de admisión a las principales universidades del país.
+                    </p>
+                    <div class="flex justify-center">
+                        <div class="inline-flex items-center px-4 py-2 bg-green-900/50 rounded-full text-sm">
+                            <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+                            <span>Alpha 6.3.5 2U</span>
+                        </div>
+                    </div>
+                </div>
+                
+         
+                <div class="glass-card rounded-3xl p-8 card-3d">
+                    <div class="w-16 h-16 bg-gradient-to-r from-yellow-600 to-amber-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-gamepad text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-center mb-4">QuennGames</h3>
+                    <p class="text-gray-300 text-center mb-6">
+                        información no disponible actualmente.
+                    </p>
+                    <div class="flex justify-center">
+                        <div class="inline-flex items-center px-4 py-2 bg-yellow-900/50 rounded-full text-sm">
+                            <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+                            <span>??</span>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="glass-card rounded-3xl p-8 card-3d">
+                    <div class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-violet-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-briefcase text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-center mb-4">??</h3>
+                    <p class="text-gray-300 text-center mb-6">
+                        información no disponible actualmente.
+                    </p>
+                    <div class="flex justify-center">
+                        <div class="inline-flex items-center px-4 py-2 bg-indigo-900/50 rounded-full text-sm">
+                            <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+                            <span>??</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                  <div class="mt-16 text-center">
+                
+            </div>
+        </div>
+    </section>
+    <section id="features" class="py-20 px-6 relative bg-gradient-to-b from-gray-900/50 to-black/50">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-sm font-bold mb-4 glow-purple">
+                    <i class="fas fa-star mr-1"></i>CARACTERÍSTICAS ÚNICAS
+                </span>
+                
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Descubre las innovaciones que tiene QuennNix.
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center mb-20">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
+                    <div class="glass-card rounded-3xl p-1 inline-block mb-6">
+                        <div class="w-14 h-14 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-bolt text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4">Integración Perfecta</h3>
+                    <p class="text-lg text-gray-300 mb-6">
+                        Todas las aplicaciones del ecosistema comparten datos y funcionalidades de forma fluida. Cambia entre plataformas sin perder el contexto.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-5 h-5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <span class="ml-3 text-gray-300">Comparte datos e información con nuestra tecnología de integración en todo el ecosistema QuennNix</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-5 h-5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <span class="ml-3 text-gray-300">Notificaciones unificadas y personalizables</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-5 h-5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <span class="ml-3 text-gray-300">Controla todo el ecosistema con un diseño simple y responsivo.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="relative card-3d glass-card rounded-3xl overflow-hidden border border-purple-500/30">
+                        <img src="IMG-20250527-WA0001.jpg" class="w-full h-auto">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-purple-900/70 z-10"></div>
+                        <div class="absolute bottom-0 left-0 right-0 z-20 p-6">
+                            <h3 class="font-bold text-xl mb-2">Facil e intuitivo</h3>
+                            <p class="text-sm text-gray-300">Activa o desactiva herramientas con un simple botón.</p>
+                            <div class="mt-4 flex space-x-3">
+                                <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-comment text-white"></i>
+                                </div>
+                                <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-video text-white"></i>
+                                </div>
+                                <div class="w-10 h-10 bg-gradient-to-r from-green-600 to-teal-500 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-graduation-cap text-white"></i>
+                                </div>
+                                <div class="w-10 h-10 bg-gradient-to-r from-yellow-600 to-amber-500 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-gamepad text-white"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+                <div class="flex flex-col lg:flex-row-reverse items-center mb-20">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pl-10">
+                    <div class="glass-card rounded-3xl p-1 inline-block mb-6">
+                        <div class="w-14 h-14 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-lock text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4">Seguridad</h3>
+                    <p class="text-lg text-gray-300 mb-6">
+                        Protegemos tus datos con cifrado y protocolos de seguridad.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-5 h-5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <span class="ml-3 text-gray-300">Cifrado end-to-end en todo el ecosistema.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-5 h-5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <span class="ml-3 text-gray-300">Autenticación multifactor</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-5 h-5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <span class="ml-3 text-gray-300">No compartimos tus datos con terceros</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="relative card-3d glass-card rounded-3xl overflow-hidden border border-purple-500/30">
+                        <img src="IMG-20250527-WA0002.jpg" class="w-full h-auto">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-purple-900/70 z-10"></div>
+                        <div class="absolute bottom-0 left-0 right-0 z-20 p-6">
+                            <h3 class="font-bold text-xl mb-2">Panel de Seguridad</h3>
+                            <p class="text-sm text-gray-300">Control total sobre tu privacidad y configuración de seguridad</p>
+                            <div class="mt-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm">Cifrado de datos</span>
+                                    <span class="text-sm font-bold text-green-400">Activo</span>
+                                </div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm">Autenticación 2FA</span>
+                                    <span class="text-sm font-bold text-green-400">Activado</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
+                    <div class="glass-card rounded-3xl p-1 inline-block mb-6">
+                        <div class="w-14 h-14 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-brain text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4">Inteligencia Artificial Integrada</h3>
+                    <p class="text-lg text-gray-300 mb-6">
+                        HypAI aprende de tus hábitos y preferencias para ofrecerte una experiencia personalizada en todo el ecosistema.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-5 h-5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <span class="ml-3 text-gray-300">Asistente virtual que anticipa tus necesidades</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-5 h-5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <span class="ml-3 text-gray-300">Automatización de tareas repetitivas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-5 h-5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <span class="ml-3 text-gray-300">Recomendaciones inteligentes basadas en tu uso</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                         <div class="lg:w-1/2">
+                    <div class="relative card-3d glass-card rounded-3xl overflow-hidden border border-cyan-500/30">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2340&auto=format&fit=crop" class="w-full h-auto">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-blue-900/70 z-10"></div>
+                        <div class="absolute bottom-0 left-0 right-0 z-20 p-6">
+                            <h3 class="font-bold text-xl mb-2">HypAI Asistente</h3>
+                            <p class="text-sm text-gray-300">Tu asistente personalizado en todo el ecosistema</p>
+                            <div class="mt-4 bg-gray-900/50 rounded-xl p-3">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-10 h-10 bg-gradient-to-r from-cyan-600 to-blue-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-robot text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-semibold mb-1">HypAI</div>
+                                        <div class="text-xs bg-gray-800/50 rounded-lg p-2 inline-block">He notado que sueles hacer exámenes todas las noches entre las 7 y 8 p. m. ¿Quieres que te programe un simulador de examen a las 8 p. m. en QueenSchool para mañana?</div>
+                                        <div class="mt-2 flex space-x-2">
+                                            <button class="text-xs bg-cyan-600/30 hover:bg-cyan-600/50 px-2 py-1 rounded transition-all duration-300">Sí, programa el examen</button>
+                                            <button class="text-xs bg-gray-700 hover:bg-gray-600 px-2 py-1 rounded transition-all duration-300">No esta vez</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- gay el quien lo lea -->
+    <section id="contact" class="py-20 px-6 relative">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-sm font-bold mb-4 glow-purple">
+                    <i class="fas fa-envelope mr-1"></i>CONTÁCTANOS
+                </span>
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-4">
+                    Estamos <span class="gradient-text">listos para ayudarte</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    ¿Tienes preguntas o necesitas soporte? Nuestro equipo está disponible 24/7.
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-10">
+                <div class="lg:w-1/2">
+                    <div class="glass-card rounded-3xl p-8 h-full">
+                        <h3 class="text-2xl font-bold mb-6">Información de Contacto</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-xl flex items-center justify-center">
+                                        <i class="fas fa-map-marker-alt text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-lg">Oficina Central</h4>
+                                    <p class="text-gray-300">not available </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl flex items-center justify-center">
+                                        <i class="fas fa-phone-alt text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-lg">Teléfono</h4>
+                                    <p class="text-gray-300">+51 927344346</p>
+
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl flex items-center justify-center">
+                                        <i class="fas fa-envelope text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-lg">Correo Electrónico</h4>
+                                    <p class="text-gray-300">quennnix@gmail.com</p>
+
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-green-600 to-teal-600 rounded-xl flex items-center justify-center">
+                                        <i class="fas fa-clock text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-lg">Horario de Atención</h4>
+                                    <p class="text-gray-300">Lunes a Viernes: 9:00 - 18:00</p>
+                                    <p class="text-gray-300">Soporte: 24/7</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 pt-6 border-t border-purple-900">
+                            <h4 class="font-bold text-lg mb-4">Síguenos en Redes</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.facebook.com/share/18u7pqjYF9/" class="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center hover:opacity-90 transition-all duration-300">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </div>
+        </div>
+    </section>
+    
+    
+    <section class="relative py-16 px-4 sm:px-6 lg:px-8 bg-transparent backdrop-blur-sm">
+  <div class="max-w-4xl mx-auto text-center">
+    <div class="inline-flex items-center px-4 py-2 mb-6 rounded-full bg-black bg-opacity-20">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2 text-white">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" />
+      </svg>
+      <span class="text-white font-semibold">Evolución de infraestructura QuennNix</span>
+    </div>
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+      Modernizando nuestra infraestructura
+    </h2>
+    <div class="bg-black bg-opacity-30 rounded-xl p-6 sm:p-8 backdrop-blur-sm">
+      <p class="text-lg sm:text-xl text-gray-200 mb-6">
+        Hemos migrado nuestro frontend de HTML tradicional a una arquitectura moderna con:
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <!-- React -->
+        <span class="flex items-center px-4 py-2 bg-blue-600 bg-opacity-70 text-white rounded-full">
+          <svg class="w-5 h-5 mr-2" viewBox="0 0 128 128" fill="currentColor">
+            <path d="M64 31.24c-14.59 0-29.18.68-40.33 4.05C9.6 40.1 0 50.94 0 64s9.6 23.9 23.67 28.71c11.15 3.37 25.74 4.05 40.33 4.05s29.18-.68 40.33-4.05C118.4 87.9 128 77.06 128 64s-9.6-23.9-23.67-28.71c-11.15-3.37-25.74-4.05-40.33-4.05zm0 7.46c13.69 0 27.38.62 37.83 3.25 8.23 2.25 15.32 6.59 15.32 12.05s-7.09 9.8-15.32 12.05c-10.45 2.63-24.14 3.25-37.83 3.25s-27.38-.62-37.83-3.25C17.94 65.2 10.85 60.86 10.85 55.4s7.09-9.8 15.32-12.05c10.45-2.63 24.14-3.25 37.83-3.25z"></path><ellipse cx="64" cy="64" rx="39.32" ry="24.43" fill="none"></ellipse>
+          </svg>
+          React
+        </span>
+        <!-- TypeScript -->
+        <span class="flex items-center px-4 py-2 bg-blue-800 bg-opacity-70 text-white rounded-full">
+          <svg class="w-5 h-5 mr-2" viewBox="0 0 128 128" fill="currentColor">
+            <path d="M2 63.91v62.5h125v-125H2zm100.73-5a15.56 15.56 0 017.82 4.5 20.58 20.58 0 013 4c0 .16-5.4 3.81-8.69 5.85-.12.08-.6-.44-1.13-1.23a7.09 7.09 0 00-5.87-3.53c-3.79-.26-6.23 1.73-6.21 5a4.58 4.58 0 00.54 2.34c.83 1.73 2.38 2.76 7.24 4.86 8.95 3.85 12.78 6.39 15.16 10 2.66 4 3.25 10.46 1.45 15.24-2 5.2-6.9 8.73-13.83 9.9a38.32 38.32 0 01-9.52-.1 23 23 0 01-12.72-6.63c-1.15-1.27-3.39-4.58-3.25-4.82a85.13 85.13 0 011.15-1.4l2.39-2.44 1.42-1.43.1.14a18.1 18.1 0 005.74 4.54c4 1.93 9.46 1.34 11.8-.85a5.42 5.42 0 00.69-6.92c-1-1.39-3-2.56-8.59-5-6.45-2.78-9.23-4.5-11.77-7.24a16.48 16.48 0 01-3.43-6.25 25 25 0 01-.22-8c1.33-6.23 6-10.58 12.82-11.87a31.66 31.66 0 019.49.26zm-29.34 5.24v5.12H57.16v46.23H45.65V69.26H29.38v-5a49.19 49.19 0 01.14-5.16c.06-.08 10-.12 22-.1h21.81z"></path>
+          </svg>
+          TypeScript
+        </span>
+        <!-- Tailwind CSS -->
+        <span class="flex items-center px-4 py-2 bg-cyan-500 bg-opacity-70 text-white rounded-full">
+          <svg class="w-5 h-5 mr-2" viewBox="0 0 128 128" fill="currentColor">
+            <path d="M64.004 25.602c-17.067 0-27.73 8.53-32 25.597 6.398-8.531 13.867-11.73 22.398-9.597 4.871 1.214 8.352 4.746 12.207 8.66C72.883 56.629 80.145 64 96.004 64c17.066 0 27.73-8.531 32-25.602-6.399 8.536-13.867 11.735-22.399 9.602-4.87-1.215-8.347-4.746-12.207-8.66-6.27-6.367-13.53-13.738-29.394-13.738zM32.004 64c-17.066 0-27.73 8.531-32 25.602C6.402 81.066 13.87 77.867 22.402 80c4.871 1.215 8.352 4.746 12.207 8.66 6.274 6.367 13.536 13.738 29.395 13.738 17.066 0 27.73-8.53 32-25.597-6.399 8.531-13.867 11.73-22.399 9.597-4.87-1.214-8.347-4.746-12.207-8.66C55.128 71.371 47.868 64 32.004 64zm0 0"></path>
+          </svg>
+          Tailwind CSS
+        </span>
+        <!-- Vite -->
+        <span class="flex items-center px-4 py-2 bg-purple-600 bg-opacity-70 text-white rounded-full">
+          <svg class="w-5 h-5 mr-2" viewBox="0 0 128 128" fill="currentColor">
+            <path d="M112.19 25.03l-8.74-8.53a4.37 4.37 0 00-3-1.2 4.3 4.3 0 00-3 1.2L64.13 40.56 52.81 29.33l-10.9-10.64a4.3 4.3 0 00-6 0l-8.74 8.53a4.48 4.48 0 000 6.34l45.6 45.15.07.07.07.07 15.73-15.55 10.79-10.63 10.8-10.68a4.48 4.48 0 00-.03-6.3zM64.14 52.55L35.5 24.48l4.41-4.28 24.22 23.61 10.9 10.63zm0 0M22.48 28.03a4.48 4.48 0 00-3.15 1.3l-8.74 8.53a4.48 4.48 0 000 6.34l45.6 45.15.07.07.07.07 15.73-15.55L22.48 28.03zm0 0"></path><path d="M78.32 51.48l-4.12-4.01-10.06 9.95-10.79 10.63-15.7 15.58L1.6 92.5a4.48 4.48 0 000 6.34l8.74 8.53a4.37 4.37 0 003 1.2 4.3 4.3 0 003-1.2l59.66-58.6-5.68-5.59zm0 0"></path>
+          </svg>
+          Vite
+        </span>
+      </div>
+      <p class="text-lg sm:text-xl text-gray-200">
+        Actualmente estamos migrando nuestro backend de 
+        <span class="flex items-center justify-center font-medium text-orange-300">
+          <svg class="w-5 h-5 mr-1" viewBox="0 0 128 128" fill="currentColor">
+            <path d="M107.3 45.2c-2.2-.8-4.5-1.6-6.9-2.3.6-2.4 1.1-4.8 1.5-7.1 2.1-13.2-.2-22.5-6.6-26.1-1.9-1.1-4-1.6-6.4-1.6-7 0-15.9 5.2-24.9 13.9-9-8.7-17.9-13.9-24.9-13.9-2.4 0-4.5.5-6.4 1.6-6.4 3.7-8.7 13-6.6 26.1.4 2.3.9 4.7 1.5 7.1-2.4.7-4.7 1.6-6.9 2.3C13.1 50 2 62.9 2 75.8c0 13.1 10.7 23.8 23.8 23.8 9.6 0 17.9-5.7 21.7-13.9 3.8 8.2 12.1 13.9 21.7 13.9 9.6 0 17.9-5.7 21.7-13.9 3.8 8.2 12.1 13.9 21.7 13.9 13.1 0 23.8-10.7 23.8-23.8-.1-12.9-11.1-25.7-27.4-30.6zM92 105.2c-7.9 0-14.4-6.5-14.4-14.4S84.1 76.4 92 76.4s14.4 6.5 14.4 14.4-6.5 14.4-14.4 14.4zm-28.8-14.4c0 7.9-6.5 14.4-14.4 14.4s-14.4-6.5-14.4-14.4S41 76.4 48.9 76.4s14.4 6.5 14.4 14.4zm-53.1-30c-4.1 0-7.9-3.4-7.9-7.9 0-4.1 3.4-7.9 7.9-7.9 4.1 0 7.9 3.4 7.9 7.9 0 4.6-3.8 7.9-7.9 7.9zm28.8-31.7c4.1 0 7.9 3.4 7.9 7.9 0 4.1-3.4 7.9-7.9 7.9-4.1 0-7.9-3.4-7.9-7.9-.1-4.6 3.8-7.9 7.9-7.9zm25.3 6.1c3.7 0 6.8 3 6.8 6.8 0 3.7-3 6.8-6.8 6.8-3.7 0-6.8-3-6.8-6.8 0-3.8 3.1-6.8 6.8-6.8zm28.1 0c3.7 0 6.8 3 6.8 6.8 0 3.7-3 6.8-6.8 6.8-3.7 0-6.8-3-6.8-6.8 0-3.8 3.1-6.8 6.8-6.8z"></path>
+          </svg>
+          Supabase
+        </span> 
+        a una solución escalable en 
+        <span class="flex items-center justify-center font-medium text-amber-400">
+          <svg class="w-5 h-5 mr-1" viewBox="0 0 128 128" fill="currentColor">
+            <path d="M61.1 52.5h5.8v22.9h-5.8zM86.3 76.5c-1.7 0-3.1.6-4.2 1.7l-2.4-2.4v-7.7h-7.4v23.2h7.4V86c0-1.8 1.5-3.3 3.3-3.3h2.1c1.8 0 3.3 1.5 3.3 3.3v8.6h7.4V86c0-5.2-4.3-9.5-9.5-9.5h-2.1zM40.4 60.1h-7.4v23.2h7.4v-6.9c1.7 1.1 3.2 1.7 5.2 1.7 5.2 0 9.5-4.3 9.5-9.5v-8.5h-7.4v6.3c0 1.8-1.5 3.3-3.3 3.3h-1.7c-1.8 0-3.3-1.5-3.3-3.3v-6.3zM0 60.1v23.2h7.4V60.1zm118.6 0v23.2H128V66.3c0-5.2-4.3-9.5-9.5-9.5h-1.7c-1.8 0-3.3.6-4.2 1.7V60.1z"></path><path d="M61.4 0L0 61.4l61.4 61.4 6.6-6.6-54.8-54.8L68 6.6z"></path>
+          </svg>
+          AWS
+        </span> para mejorar el rendimiento y la seguridad.
+      </p>
+    </div>
+  </div>
+</section>
+    
+
+    <div class="container mx-auto relative z-10">
+        <div class="glass-card-xl rounded-3xl p-10 text-center backdrop-blur-lg border border-white/10 shadow-2xl shadow-purple-900/20 hover:shadow-purple-900/30 transition-all duration-500">
+            <div class="mx-auto mb-6 w-20 h-20 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/30 animate-pulse-slow">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+            </div>
+            
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                <span class="gradient-text bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent">Únete al ecosistema</span><br>
+                <span class="text-white">QuennNix</span>
+            </h2>
+            
+            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+                El ecosistema está llegando. Sé el primero en experimentarla cuando esté disponible.
+            </p>
+            <div class="inline-flex items-center mb-10 px-6 py-2 rounded-full bg-gradient-to-r from-purple-900/70 to-cyan-900/70 border border-purple-500/30 text-purple-200 text-sm font-semibold animate-pulse">
+                <span class="relative flex h-3 w-3 mr-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
+                </span>
+                PRÓXIMAMENTE - EN DESARROLLO
+            </div>
+            
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+                <div class="platform-card group">
+                    <div class="platform-icon bg-gradient-to-br from-blue-600 to-blue-800">
+                        <i class="fab fa-windows text-2xl"></i>
+                    </div>
+                    <h3>Windows</h3>
+                    <div class="badge">No disponible</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%"></div>
+                    </div>
+                    
+                </div>
+                
+                <div class="platform-card group">
+                    <div class="platform-icon bg-gradient-to-br from-gray-700 to-gray-900">
+                        <i class="fab fa-apple text-2xl"></i>
+                    </div>
+                    <h3>macOS</h3>
+                    <div class="badge">No disponible</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 40%"></div>
+                    </div>
+                    
+                </div>
+                
+                <div class="platform-card group">
+                    <div class="platform-icon bg-gradient-to-br from-orange-600 to-orange-800">
+                        <i class="fab fa-linux text-2xl"></i>
+                    </div>
+                    <h3>Linux</h3>
+                    <div class="badge">No disponible</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%"></div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+                <a href="descargar_android_apk.html" class="secondary-platform-card bg-gradient-to-br from-green-700 to-green-900 hover:from-green-600 hover:to-green-800">
+                    <i class="fab fa-android"></i>
+                    <span>Android <span class="text-xs opacity-70"></span></span>
+                </a>
+                
+                <a href="#" class="secondary-platform-card bg-gradient-to-br from-gray-700 to-gray-900 hover:from-gray-600 hover:to-gray-800">
+                    <i class="fab fa-app-store-ios"></i>
+                    <span>iOS <span class="text-xs opacity-70">(No disponible)</span></span>
+                </a>
+                
+                <a href="#" class="secondary-platform-card bg-gradient-to-br from-red-700 to-red-900 hover:from-red-600 hover:to-red-800">
+                    <i class="fab fa-chrome"></i>
+                    <span>Versión Web <span class="text-xs opacity-70">(No disponible)</span></span>
+                </a>
+            </div>
+            
+
+            
+            
+        </div>
+    </div>
+</section>
+
+<style>
+    .glass-card-xl {
+        background: rgba(15, 23, 42, 0.7);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+    }
+    
+    .platform-card {
+        @apply bg-gray-800/50 p-6 rounded-2xl border border-gray-700/50 hover:border-purple-500/30 transition-all duration-300 text-center;
+    }
+    
+    .platform-card:hover {
+        @apply transform -translate-y-1 shadow-lg shadow-purple-500/10;
+    }
+    
+    .platform-icon {
+        @apply w-16 h-16 mx-auto rounded-2xl flex items-center justify-center mb-4 text-white shadow-md;
+    }
+    
+    .platform-card h3 {
+        @apply text-lg font-bold text-white mb-2;
+    }
+    
+    .badge {
+        @apply inline-block px-3 py-1 bg-gray-900/80 text-gray-400 text-xs font-semibold rounded-full mb-3;
+    }
+    
+    .progress-bar {
+        @apply w-full h-1.5 bg-gray-700 rounded-full overflow-hidden mb-1;
+    }
+    
+    .progress-fill {
+        @apply h-full bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full;
+    }
+    
+    .secondary-platform-card {
+        @apply flex items-center gap-3 p-4 rounded-xl border border-gray-800 transition-all duration-300 text-gray-300 font-medium;
+    }
+    
+    .secondary-platform-card i {
+        @apply text-xl;
+    }
+    
+   
+</style>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/80 border-t border-purple-900/30 py-12 px-6">
+        <div class="container mx-auto">
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    © 2025 Quenn Studios 
+                </p>
+                
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Toggle mobile snapshots
+        function toggleMobileSnapshots() {
+            const menu = document.getElementById('mobile-snapshot-menu');
+            const arrow = document.getElementById('mobile-snapshot-arrow');
+            menu.classList.toggle('hidden');
+            arrow.classList.toggle('rotate-180');
+        }
+
+        // Toggle desktop snapshots
+        function toggleSnapshots() {
+            const menu = document.getElementById('snapshot-menu');
+            const arrow = document.getElementById('snapshot-arrow');
+            menu.classList.toggle('active');
+            arrow.classList.toggle('rotate-180');
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            const snapshotBtn = document.querySelector('[onclick="toggleSnapshots()"]');
+            const snapshotMenu = document.getElementById('snapshot-menu');
+            const mobileSnapshotBtn = document.querySelector('[onclick="toggleMobileSnapshots()"]');
+            const mobileSnapshotMenu = document.getElementById('mobile-snapshot-menu');
+
+            // Close desktop snapshot menu
+            if (snapshotBtn && !snapshotBtn.contains(event.target) && snapshotMenu && !snapshotMenu.contains(event.target)) {
+                snapshotMenu.classList.remove('active');
+                document.getElementById('snapshot-arrow').classList.remove('rotate-180');
+            }
+
+            // Close mobile snapshot menu
+            if (mobileSnapshotBtn && !mobileSnapshotBtn.contains(event.target) && mobileSnapshotMenu && !mobileSnapshotMenu.contains(event.target)) {
+                mobileSnapshotMenu.classList.add('hidden');
+                document.getElementById('mobile-snapshot-arrow').classList.remove('rotate-180');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Create additional particles dynamically
+        function createParticles() {
+            const particleField = document.querySelector('.particle-field');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random size between 2px and 8px
+                const size = Math.floor(Math.random() * 6) + 2;
+                
+                // Random position
+                const left = Math.floor(Math.random() * 100);
+                
+                // Random animation delay (up to 12s)
+                const delay = Math.floor(Math.random() * 12);
+                
+                // Random animation duration (between 8s and 20s)
+                const duration = Math.floor(Math.random() * 12) + 8;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particleField.appendChild(particle);
+            }
+        }
+
+        // Initialize particles on load
+        window.addEventListener('load', createParticles);
+    </script>
+</body>
+</html>

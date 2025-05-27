@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuennNix APK_Descarga</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .aurora-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .aurora-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+            animation: aurora 4s ease-in-out infinite alternate;
+        }
+        
+        @keyframes aurora {
+            0% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #4F46E5, #7C3AED, #EC4899);
+            background-size: 200% 100%;
+            animation: shimmer 2s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .pulse-ring {
+            animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.33);
+            }
+            80%, 100% {
+                opacity: 0;
+            }
+        }
+        
+        .loading-dots::after {
+            content: '';
+            animation: loading-dots 1.5s steps(4, end) infinite;
+        }
+        
+        @keyframes loading-dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
+        }
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .error-shake {
+            animation: error-shake 0.5s ease-in-out;
+        }
+        
+        @keyframes error-shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        .success-bounce {
+            animation: success-bounce 0.6s ease-in-out;
+        }
+        
+        @keyframes success-bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="h-full bg-gray-900 text-white">
+    <div class="aurora-bg min-h-screen">
+        <div class="relative z-10 min-h-screen">
+            <!-- Header -->
+            <header class="container mx-auto px-4 py-6">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center font-bold text-lg">
+                            Q
+                        </div>
+                        <h1 class="text-2xl font-bold">QuennNix</h1>
+                    </div>
+                    <div class="glass px-4 py-2 rounded-full">
+                        <span class="text-sm opacity-80">Versión 1.0.0 Beta</span>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Main Content -->
+            <main class="container mx-auto px-4 py-12">
+                <!-- Hero Section -->
+                <div class="text-center mb-16">
+                    <div class="float mb-8">
+                        <div class="w-32 h-32 mx-auto bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center mb-6 shadow-2xl">
+                            <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                        QuennNix
+                    </h2>
+                    <p class="text-xl text-gray-300 mb-2">Ecosistema completo de herramientas</p>
+                    <p class="text-sm text-gray-400 mb-8">🚧 Aún en desarrollo - Únete a más de 45 usuarios</p>
+                    
+                    <div class="flex items-center justify-center space-x-4 mb-8">
+                        <div class="flex text-yellow-400">
+                            ★★★★☆
+                        </div>
+                        <span class="text-gray-300">4.2 (39 reviews)</span>
+                    </div>
+                </div>
+                
+                <!-- Download Section -->
+                <div class="max-w-md mx-auto mb-16">
+                    <div class="glass rounded-2xl p-8 shadow-2xl" id="downloadCard">
+                        <div class="text-center mb-6">
+                            <h3 class="text-2xl font-bold mb-2">Descargar APK</h3>
+                            <p class="text-gray-400">Versión oficial para Android</p>
+                        </div>
+                        
+                        <!-- Progress Bar (Hidden initially) -->
+                        <div id="progressSection" class="hidden mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-sm font-medium">Descargando...</span>
+                                <span class="text-sm font-medium" id="progressText">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
+                                <div class="progress-bar h-full rounded-full transition-all duration-300 ease-out" id="progressBar" style="width: 0%"></div>
+                            </div>
+                            <div class="mt-2 text-xs text-gray-400" id="downloadInfo">
+                                Preparando descarga<span class="loading-dots"></span>
+                            </div>
+                        </div>
+                        
+                        <!-- Error Section (Hidden initially) -->
+                        <div id="errorSection" class="hidden mb-6 p-4 bg-red-900/20 border border-red-500/30 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                                </svg>
+                                <div>
+                                    <h4 class="font-semibold text-red-400">Error de descarga</h4>
+                                    <p class="text-sm text-red-300" id="errorMessage">Archivo corrupto detectado</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Download Button -->
+                        <button id="downloadBtn" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                            <span class="flex items-center justify-center space-x-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"/>
+                                </svg>
+                                <span>Descargar QuennNix APK</span>
+                            </span>
+                        </button>
+                        
+                        <div class="mt-4 text-center">
+                            <p class="text-xs text-gray-500">Tamaño: ~45.2 MB • Android 7.0+</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Features Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                    <div class="feature-card glass rounded-xl p-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8h16v10z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">QuennChat</h3>
+                        <p class="text-gray-400 text-sm mb-2">Plataforma de mensajería avanzada</p>
+                        <span class="text-xs bg-green-900/30 text-green-400 px-2 py-1 rounded-full">Alpha 8.45.5</span>
+                    </div>
+                    
+                    <div class="feature-card glass rounded-xl p-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">QuennVix</h3>
+                        <p class="text-gray-400 text-sm mb-2">Ver películas con amigos en tiempo real</p>
+                        <span class="text-xs bg-purple-900/30 text-purple-400 px-2 py-1 rounded-full">Alpha 29.2.6.4</span>
+                    </div>
+                    
+                    <div class="feature-card glass rounded-xl p-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">HypAI</h3>
+                        <p class="text-gray-400 text-sm mb-2">Asistente de IA personalizable</p>
+                        <span class="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded-full">Alpha 1.1.2</span>
+                    </div>
+                    
+                    <div class="feature-card glass rounded-xl p-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">QuennSchool</h3>
+                        <p class="text-gray-400 text-sm mb-2">Plataforma educativa inteligente</p>
+                        <span class="text-xs bg-orange-900/30 text-orange-400 px-2 py-1 rounded-full">Alpha 6.3.5 2U</span>
+                    </div>
+                    
+                    <div class="feature-card glass rounded-xl p-6 opacity-60">
+                        <div class="w-12 h-12 bg-gradient-to-r from-gray-500 to-gray-600 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">QuennGames</h3>
+                        <p class="text-gray-400 text-sm mb-2">Información no disponible</p>
+                        <span class="text-xs bg-gray-900/30 text-gray-400 px-2 py-1 rounded-full">Próximamente</span>
+                    </div>
+                    
+                    <div class="feature-card glass rounded-xl p-6 opacity-60">
+                        <div class="w-12 h-12 bg-gradient-to-r from-gray-500 to-gray-600 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">??? Secreto</h3>
+                        <p class="text-gray-400 text-sm mb-2">Información no disponible</p>
+                        <span class="text-xs bg-gray-900/30 text-gray-400 px-2 py-1 rounded-full">Próximamente</span>
+                    </div>
+                </div>
+                
+                <!-- Development Progress -->
+                <div class="glass rounded-xl p-6 mb-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold">Desarrollo del ecosistema</h3>
+                        <span class="text-2xl font-bold text-blue-400">9%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full" style="width: 9%"></div>
+                    </div>
+                    <p class="text-sm text-gray-400 mt-2">Ecosistema integrado en desarrollo </p>
+                </div>
+            </main>
+            
+            <!-- Footer -->
+            <footer class="container mx-auto px-4 py-8 text-center">
+                <p class="text-gray-400">&copy; 2025 Quenn Studios. Todos los derechos reservados.</p>
+            </footer>
+        </div>
+    </div>
+    
+    <script>
+        const downloadBtn = document.getElementById('downloadBtn');
+        const progressSection = document.getElementById('progressSection');
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+        const downloadInfo = document.getElementById('downloadInfo');
+        const errorSection = document.getElementById('errorSection');
+        const errorMessage = document.getElementById('errorMessage');
+        const downloadCard = document.getElementById('downloadCard');
+        
+        let downloadProgress = 0;
+        let downloadInterval;
+        
+        const errorMessages = [
+            'Archivo corrupto detectado',
+            'Error de integridad en el paquete',
+            'Fallo en la verificación de firma',
+            'Datos incompletos en la descarga',
+            'Error de conexión con el servidor'
+        ];
+        
+        const downloadSteps = [
+            'Preparando descarga...',
+            'Conectando con el servidor...',
+            'Iniciando transferencia...',
+            'Descargando archivos principales...',
+            'Verificando integridad...',
+            'Procesando componentes...',
+            'Finalizando descarga...'
+        ];
+        
+        downloadBtn.addEventListener('click', function() {
+            startDownload();
+        });
+        
+        function startDownload() {
+            // Reset state
+            downloadProgress = 0;
+            errorSection.classList.add('hidden');
+            downloadCard.classList.remove('error-shake');
+            
+            // Show progress
+            progressSection.classList.remove('hidden');
+            downloadBtn.disabled = true;
+            downloadBtn.innerHTML = `
+                <span class="flex items-center justify-center space-x-2">
+                    <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Descargando...</span>
+                </span>
+            `;
+            
+            // Simulate download
+            downloadInterval = setInterval(() => {
+                const increment = Math.random() * 3 + 1; // Random increment between 1-4%
+                downloadProgress += increment;
+                
+                // Update progress display
+                const displayProgress = Math.min(Math.floor(downloadProgress), 100);
+                progressBar.style.width = displayProgress + '%';
+                progressText.textContent = displayProgress + '%';
+                
+                // Update download info
+                const stepIndex = Math.floor((downloadProgress / 100) * downloadSteps.length);
+                if (stepIndex < downloadSteps.length) {
+                    downloadInfo.textContent = downloadSteps[stepIndex];
+                }
+                
+                // Simulate random failure between 75-89%
+                const failureChance = Math.random();
+                if (downloadProgress >= 75 && downloadProgress < 90 && failureChance < 0.15) {
+                    simulateError();
+                    return;
+                }
+                
+                // Complete download
+                if (downloadProgress >= 100) {
+                    completeDownload();
+                }
+            }, 200 + Math.random() * 300); // Random interval for realistic feel
+        }
+        
+        function simulateError() {
+   
