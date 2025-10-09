@@ -1,3 +1,554 @@
-
-        
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuennNix - Ecosistema Quenn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    .animacion-entrada {
+      opacity: 0;
+    }
+    .animacion-visible {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    .animacion-escala {
+      animation: scaleIn 0.6s ease-out forwards;
+    }
+    .animacion-izquierda {
+      animation: slideInLeft 0.6s ease-out forwards;
+    }
+    .animacion-derecha {
+      animation: slideInRight 0.6s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-[#030014] via-[#0a0024] to-[#1a0030] text-white min-h-screen relative overflow-x-hidden font-sans antialiased">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#b829ff15] via-transparent to-transparent pointer-events-none"></div>
   
+  
+  
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <div class="absolute top-1/4 right-1/4 w-2 h-2 bg-[#00fff2] rounded-full blur-sm opacity-60 hidden md:block"></div>
+  <div class="absolute top-1/3 left-1/3 w-1 h-1 bg-[#b829ff] rounded-full blur-sm opacity-70 hidden md:block"></div>
+  <div class="absolute bottom-1/4 right-1/3 w-1.5 h-1.5 bg-[#29b6ff] rounded-full blur-sm opacity-50 hidden md:block"></div>
+  <div class="absolute top-2/3 left-1/4 w-1 h-1 bg-[#00fff2] rounded-full blur-sm opacity-60 hidden md:block"></div>
+
+  <nav class="relative z-50 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="flex items-center justify-between backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl px-4 sm:px-6 py-3 shadow-xl">
+      <div class="flex items-center gap-2 sm:gap-3">
+        <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-[#b829ff] to-[#00fff2] rounded-xl flex items-center justify-center">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <span class="text-lg sm:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#b829ff] to-[#00fff2]">Quenn</span>
+      </div>
+      <div class="flex items-center gap-2 sm:gap-4">
+        <button class="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>Documentación</span>
+        </button>
+        <button class="px-3 py-2 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold bg-gradient-to-r from-[#b829ff] to-[#00fff2] rounded-xl hover:shadow-lg hover:shadow-[#b829ff]/50 transition-all transform hover:scale-105">
+          Contacto
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="relative z-10 flex flex-col items-center px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    
+    <div class="animacion-entrada text-center mb-6 sm:mb-8 mt-4 sm:mt-8" data-animacion="escala">
+      <div class="inline-flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-2.5 backdrop-blur-xl bg-[#b829ff]/10 border border-[#b829ff]/30 rounded-full mb-4 sm:mb-6">
+        <span class="relative flex h-2 w-2 sm:h-3 sm:w-3">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00fff2] opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 sm:h-3 sm:w-3 bg-[#00fff2]"></span>
+        </span>
+        <span class="text-xs sm:text-sm font-semibold text-gray-200">Próximo lanzamiento</span>
+      </div>
+      
+      <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#b829ff] via-[#29b6ff] to-[#00fff2] mb-4 sm:mb-6 leading-tight">
+        QuennNix
+      </h1>
+    </div>
+
+    <div class="animacion-entrada relative mb-6 sm:mb-8 max-w-sm sm:max-w-md" data-animacion="escala" data-delay="200">
+      <div class="absolute inset-0 bg-gradient-to-r from-[#b829ff] to-[#00fff2] rounded-3xl blur-2xl opacity-30"></div>
+      <div class="relative backdrop-blur-xl bg-gradient-to-r from-[#b829ff]/20 via-[#29b6ff]/20 to-[#00fff2]/20 border-2 border-[#00fff2]/50 rounded-3xl px-6 py-4 sm:px-8 sm:py-5 shadow-2xl">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
+          <svg class="w-6 h-6 text-[#00fff2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <p class="text-base sm:text-lg md:text-xl font-bold text-white text-center sm:text-left">
+            Disponible el <span class="text-[#00fff2] font-black text-xl sm:text-2xl md:text-3xl">30 de noviembre</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <p class="animacion-entrada text-sm sm:text-base md:text-lg text-gray-300/90 mb-3 sm:mb-4 font-medium text-center px-4" data-animacion="visible" data-delay="300">
+      El primer paso del <span class="text-[#b829ff] font-bold bg-[#b829ff]/10 px-2 py-1 rounded-lg inline-block">Ecosistema Quenn</span>
+    </p>
+
+    <p class="animacion-entrada text-sm sm:text-base md:text-lg text-gray-400 max-w-3xl mb-8 sm:mb-12 leading-relaxed text-center px-4 sm:px-6" data-animacion="visible" data-delay="400">
+      Un ecosistema completo que conecta educación, herramientas productivas y experiencias sociales. 
+      Cada aplicación con su propósito único, pero todas compartiendo identidad, economía interna y progresión unificada. 
+      <span class="text-[#00fff2] font-semibold">El futuro del aprendizaje conectado comienza aquí.</span>
+    </p>
+
+    <a href="https://quennnix.com" target="_blank" 
+      class="animacion-entrada grupo inline-flex items-center gap-2 sm:gap-3 px-6 py-3 sm:px-8 sm:py-4 rounded-2xl bg-gradient-to-r from-[#00fff2]/10 to-[#29b6ff]/10 hover:from-[#00fff2]/25 hover:to-[#29b6ff]/25 border-2 border-[#00fff2]/40 hover:border-[#00fff2]/70 text-[#00fff2] font-bold transition-all duration-300 mb-12 sm:mb-20 shadow-lg hover:shadow-[0_0_30px_rgba(0,255,242,0.3)] transform hover:scale-105 text-sm sm:text-base md:text-lg" data-animacion="escala" data-delay="500">
+      <span>Explorar QuennNix</span>
+      <svg class="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+    </a>
+
+    <div class="w-full max-w-7xl mb-12 sm:mb-16 px-4">
+      <h2 class="animacion-entrada text-2xl sm:text-3xl md:text-4xl font-black text-center mb-8 sm:mb-12 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300" data-animacion="visible">
+        Aplicaciones del Ecosistema
+      </h2>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+
+        <div class="animacion-entrada grupo relative backdrop-blur-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/20 rounded-3xl p-6 sm:p-8 hover:border-[#00fff2]/50 transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2 shadow-xl hover:shadow-[0_20px_60px_rgba(0,255,242,0.2)] cursor-pointer" data-animacion="visible" data-delay="100">
+          <div class="absolute inset-0 bg-gradient-to-br from-[#00fff2]/0 to-[#00fff2]/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#00fff2] to-[#29b6ff] rounded-2xl mb-4 sm:mb-6 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-7 h-7 sm:w-9 sm:h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+              </svg>
+            </div>
+            <div class="flex items-center gap-2 mb-3">
+              <h3 class="text-xl sm:text-2xl md:text-3xl font-black text-[#00fff2]">QuennNix</h3>
+              <span class="px-2 py-1 text-xs font-bold bg-[#00fff2]/20 text-[#00fff2] rounded-lg">ID</span>
+            </div>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
+              El núcleo que impulsa todo el ecosistema. Gestiona identidad digital, wallet de XP, APIs robustas y el catálogo completo de integraciones. 
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 sm:px-3 py-1 text-xs bg-[#00fff2]/10 text-[#00fff2] rounded-lg border border-[#00fff2]/20">Identidad</span>
+              <span class="px-2 sm:px-3 py-1 text-xs bg-[#00fff2]/10 text-[#00fff2] rounded-lg border border-[#00fff2]/20">APIs</span>
+              <span class="px-2 sm:px-3 py-1 text-xs bg-[#00fff2]/10 text-[#00fff2] rounded-lg border border-[#00fff2]/20">Wallet XP</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="animacion-entrada grupo relative backdrop-blur-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/20 rounded-3xl p-6 sm:p-8 hover:border-[#b829ff]/50 transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2 shadow-xl hover:shadow-[0_20px_60px_rgba(184,41,255,0.2)] cursor-pointer" data-animacion="visible" data-delay="200">
+          <div class="absolute inset-0 bg-gradient-to-br from-[#b829ff]/0 to-[#b829ff]/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#b829ff] to-[#7829ff] rounded-2xl mb-4 sm:mb-6 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-7 h-7 sm:w-9 sm:h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+            <div class="flex items-center gap-2 mb-3">
+              <h3 class="text-xl sm:text-2xl md:text-3xl font-black text-[#b829ff]">QuennSchool</h3>
+              <span class="px-2 py-1 text-xs font-bold bg-[#b829ff]/20 text-[#b829ff] rounded-lg">MVP</span>
+            </div>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
+              Plataforma educativa inteligente con simulacros adaptativos, seguimiento de progreso en tiempo real y personalización del aprendizaje mediante IA.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 sm:px-3 py-1 text-xs bg-[#b829ff]/10 text-[#b829ff] rounded-lg border border-[#b829ff]/20">Simulacros</span>
+              <span class="px-2 sm:px-3 py-1 text-xs bg-[#b829ff]/10 text-[#b829ff] rounded-lg border border-[#b829ff]/20">IA</span>
+              <span class="px-2 sm:px-3 py-1 text-xs bg-[#b829ff]/10 text-[#b829ff] rounded-lg border border-[#b829ff]/20">Analytics</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="animacion-entrada grupo relative backdrop-blur-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/20 rounded-3xl p-6 sm:p-8 hover:border-[#29b6ff]/50 transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2 shadow-xl hover:shadow-[0_20px_60px_rgba(41,182,255,0.2)] cursor-pointer sm:col-span-2 lg:col-span-1" data-animacion="visible" data-delay="300">
+          <div class="absolute inset-0 bg-gradient-to-br from-[#29b6ff]/0 to-[#29b6ff]/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#29b6ff] to-[#00d4ff] rounded-2xl mb-4 sm:mb-6 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-7 h-7 sm:w-9 sm:h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div class="flex items-center gap-2 mb-3">
+              <h3 class="text-xl sm:text-2xl md:text-3xl font-black text-[#29b6ff]">QuennVix</h3>
+              <span class="px-2 py-1 text-xs font-bold bg-[#29b6ff]/20 text-[#29b6ff] rounded-lg">Próximamente</span>
+            </div>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
+              Red social y entretenimiento. Disfruta películas en grupo, participa en eventos exclusivos, compite en trivias y conecta con la comunidad.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 sm:px-3 py-1 text-xs bg-[#29b6ff]/10 text-[#29b6ff] rounded-lg border border-[#29b6ff]/20">Social</span>
+              <span class="px-2 sm:px-3 py-1 text-xs bg-[#29b6ff]/10 text-[#29b6ff] rounded-lg border border-[#29b6ff]/20">Eventos</span>
+              <span class="px-2 sm:px-3 py-1 text-xs bg-[#29b6ff]/10 text-[#29b6ff] rounded-lg border border-[#29b6ff]/20">Gamificación</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+            <div class="w-full max-w-7xl mb-12 sm:mb-16 px-4">
+      <h2 class="animacion-entrada text-2xl sm:text-3xl md:text-4xl font-black text-center mb-8 sm:mb-12 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300" data-animacion="visible">
+        Características Clave
+      </h2>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+        
+        <div class="animacion-entrada grupo relative backdrop-blur-2xl bg-gradient-to-br from-white/[0.06] to-white/[0.01] border border-white/15 rounded-3xl p-6 sm:p-8 hover:border-white/30 transition-all duration-500 transform hover:scale-[1.01] shadow-lg" data-animacion="izquierda" data-delay="100">
+          <div class="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-[#00fff2]/10 rounded-full blur-3xl"></div>
+          <div class="relative">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#00fff2]/20 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-[#00fff2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                </svg>
+              </div>
+              <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-[#00fff2]">Integración Total</h3>
+            </div>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+              Single sign-on con QuennID te permite moverte sin fricciones entre aplicaciones. Tu progreso y logros te acompañan en todo momento.
+            </p>
+          </div>
+        </div>
+
+        <div class="animacion-entrada grupo relative backdrop-blur-2xl bg-gradient-to-br from-white/[0.06] to-white/[0.01] border border-white/15 rounded-3xl p-6 sm:p-8 hover:border-white/30 transition-all duration-500 transform hover:scale-[1.01] shadow-lg" data-animacion="derecha" data-delay="100">
+          <div class="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-[#b829ff]/10 rounded-full blur-3xl"></div>
+          <div class="relative">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#b829ff]/20 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-[#b829ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-[#b829ff]">Sistema XP Unificado</h3>
+            </div>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+              Gana XP estudiando, participa en eventos y desbloquea recompensas. 500 XP = 7 días premium o 10% de descuento en contenido exclusivo.
+            </p>
+          </div>
+        </div>
+
+        <div class="animacion-entrada grupo relative backdrop-blur-2xl bg-gradient-to-br from-white/[0.06] to-white/[0.01] border border-white/15 rounded-3xl p-6 sm:p-8 hover:border-white/30 transition-all duration-500 transform hover:scale-[1.01] shadow-lg" data-animacion="izquierda" data-delay="200">
+          <div class="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-[#29b6ff]/10 rounded-full blur-3xl"></div>
+          <div class="relative">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#29b6ff]/20 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-[#29b6ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-
+                  ```html
+2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-[#29b6ff]">Monetización Inteligente</h3>
+            </div>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+              Modelo híbrido: licencias, marketplace de contenido y APIs para desarrolladores.
+            </p>
+          </div>
+        </div>
+
+        <div class="animacion-entrada grupo relative backdrop-blur-2xl bg-gradient-to-br from-white/[0.06] to-white/[0.01] border border-white/15 rounded-3xl p-6 sm:p-8 hover:border-white/30 transition-all duration-500 transform hover:scale-[1.01] shadow-lg" data-animacion="derecha" data-delay="200">
+          <div class="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-[#b829ff]/10 rounded-full blur-3xl"></div>
+          <div class="relative">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#b829ff]/20 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-[#b829ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-[#b829ff]">Lanzamiento Estratégico</h3>
+            </div>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+              Validamos QuennSchool primero, construimos la infraestructura con QuennNix, y luego integramos el resto para máxima retención y escalabilidad.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full max-w-7xl mb-12 sm:mb-16 px-4">
+      <div class="animacion-entrada backdrop-blur-2xl bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-white/[0.02] border-2 border-white/20 rounded-3xl p-8 sm:p-10 md:p-12 shadow-2xl relative overflow-hidden" data-animacion="escala" data-delay="300">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#b829ff] via-[#29b6ff] to-[#00fff2]"></div>
+        <div class="absolute -top-20 -right-20 w-40 h-40 bg-[#b829ff]/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-[#00fff2]/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative">
+          <div class="flex items-center justify-center gap-3 mb-6 sm:mb-8">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-[#b829ff] to-[#00fff2] rounded-2xl flex items-center justify-center">
+              <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#b829ff] via-[#29b6ff] to-[#00fff2]">
+              Nuestra Visión
+            </h2>
+          </div>
+          <p class="text-gray-300 text-base sm:text-lg leading-relaxed text-center max-w-4xl mx-auto">
+            Quenn no es solo un conjunto de aplicaciones, es un ecosistema vivo que evoluciona contigo. 
+            Conectamos educación de calidad, herramientas de productividad avanzadas y experiencias sociales significativas bajo una única identidad digital. 
+            Cada app se fortalece con las demás a través de un sistema compartido de XP, monedas virtuales y recompensas tangibles. 
+            <span class="text-[#00fff2] font-bold">Nuestra misión: hacer que aprender, crear y conectar sean experiencias extraordinarias.</span>
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 mt-8 sm:mt-12">
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-br from-[#b829ff] to-[#00fff2] mb-2">3</div>
+              <div class="text-xs sm:text-sm text-gray-400 font-medium">Apps Conectadas</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-br from-[#00fff2] to-[#29b6ff] mb-2">∞</div>
+              <div class="text-xs sm:text-sm text-gray-400 font-medium">Posibilidades</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-br from-[#29b6ff] to-[#b829ff] mb-2">1</div>
+              <div class="text-xs sm:text-sm text-gray-400 font-medium">Identidad</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-br from-[#b829ff] to-[#00fff2] mb-2">100%</div>
+              <div class="text-xs sm:text-sm text-gray-400 font-medium">Compromiso</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+    <div class="w-full max-w-7xl mb-12 sm:mb-16 px-4">
+      <h2 class="animacion-entrada text-2xl sm:text-3xl md:text-4xl font-black text-center mb-8 sm:mb-12 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300" data-animacion="visible">
+        Preguntas Frecuentes
+      </h2>
+      
+      <div class="space-y-4">
+        <div class="animacion-entrada acordeon backdrop-blur-2xl bg-white/[0.05] border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-white/20" data-animacion="visible" data-delay="100">
+          <button class="boton-acordeon w-full px-6 py-5 sm:px-8 sm:py-6 flex items-center justify-between text-left group">
+            <span class="text-base sm:text-lg font-bold text-white group-hover:text-[#00fff2] transition-colors">¿Qué hace única a la plataforma Quenn?</span>
+            <svg class="icono-acordeon w-5 h-5 sm:w-6 sm:h-6 text-[#00fff2] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="contenido-acordeon max-h-0 overflow-hidden transition-all duration-300">
+            <div class="px-6 pb-5 sm:px-8 sm:pb-6 text-sm sm:text-base text-gray-300 leading-relaxed">
+              Quenn integra educación, productividad y socialización en un único ecosistema. No son apps aisladas, sino herramientas conectadas que comparten progreso, recompensas y datos para ofrecer una experiencia fluida y cohesiva.
+            </div>
+          </div>
+        </div>
+
+        <div class="animacion-entrada acordeon backdrop-blur-2xl bg-white/[0.05] border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-white/20" data-animacion="visible" data-delay="200">
+          <button class="boton-acordeon w-full px-6 py-5 sm:px-8 sm:py-6 flex items-center justify-between text-left group">
+            <span class="text-base sm:text-lg font-bold text-white group-hover:text-[#00fff2] transition-colors">¿Cómo funciona el sistema de XP?</span>
+            <svg class="icono-acordeon w-5 h-5 sm:w-6 sm:h-6 text-[#00fff2] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="contenido-acordeon max-h-0 overflow-hidden transition-all duration-300">
+            <div class="px-6 pb-5 sm:px-8 sm:pb-6 text-sm sm:text-base text-gray-300 leading-relaxed">
+              Ganas XP completando simulacros, asistiendo a eventos y participando activamente. Úsalo para desbloquear funciones premium, obtener descuentos, acceder a becas o personalizar tu perfil con cosméticos exclusivos.
+            </div>
+          </div>
+        </div>
+
+        <div class="animacion-entrada acordeon backdrop-blur-2xl bg-white/[0.05] border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-white/20" data-animacion="visible" data-delay="300">
+          <button class="boton-acordeon w-full px-6 py-5 sm:px-8 sm:py-6 flex items-center justify-between text-left group">
+            <span class="text-base sm:text-lg font-bold text-white group-hover:text-[#00fff2] transition-colors">¿Cuándo estarán disponibles todas las apps?</span>
+            <svg class="icono-acordeon w-5 h-5 sm:w-6 sm:h-6 text-[#00fff2] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="contenido-acordeon max-h-0 overflow-hidden transition-all duration-300">
+            <div class="px-6 pb-5 sm:px-8 sm:pb-6 text-sm sm:text-base text-gray-300 leading-relaxed">
+              QuennNix lanza el 30 de noviembre como infraestructura base. QuennSchool es nuestro MVP actual en fase de validación. QuennVix se integrará una vez validemos tracción y construyamos una base sólida de usuarios.
+            </div>
+          </div>
+        </div>
+
+        <div class="animacion-entrada acordeon backdrop-blur-2xl bg-white/[0.05] border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-white/20" data-animacion="visible" data-delay="400">
+          <button class="boton-acordeon w-full px-6 py-5 sm:px-8 sm:py-6 flex items-center justify-between text-left group">
+            <span class="text-base sm:text-lg font-bold text-white group-hover:text-[#00fff2] transition-colors">¿Quién puede usar Quenn?</span>
+            <svg class="icono-acordeon w-5 h-5 sm:w-6 sm:h-6 text-[#00fff2] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="contenido-acordeon max-h-0 overflow-hidden transition-all duration-300">
+            <div class="px-6 pb-5 sm:px-8 sm:pb-6 text-sm sm:text-base text-gray-300 leading-relaxed">
+              Estudiantes, profesionales en formación continua, instituciones educativas y empresas que buscan capacitación estructurada. El ecosistema se adapta a distintos niveles y necesidades de aprendizaje.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full max-w-4xl mb-16 sm:mb-20 px-4">
+      <div class="animacion-entrada backdrop-blur-2xl bg-gradient-to-br from-[#b829ff]/10 via-[#29b6ff]/10 to-[#00fff2]/10 border-2 border-[#00fff2]/30 rounded-3xl p-8 sm:p-12 text-center shadow-2xl" data-animacion="escala" data-delay="500">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#b829ff] to-[#00fff2]">
+          Únete al Ecosistema Quenn 
+        </h2>
+        <p class="text-sm sm:text-base md:text-lg text-gray-300 mb-6 sm:mb-8 leading-relaxed">
+          Sé parte del Ecosistema Quenn. Regístrate ahora y obtén acceso anticipado a QuennNix.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <input 
+            type="email" 
+            placeholder="No disponible Actualmente" 
+            class="w-full sm:w-80 px-6 py-4 rounded-2xl bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-[#00fff2] focus:ring-2 focus:ring-[#00fff2]/50 transition-all text-sm sm:text-base"
+          />
+          <button class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#b829ff] to-[#00fff2] rounded-2xl font-bold text-white hover:shadow-lg hover:shadow-[#b829ff]/50 transition-all transform hover:scale-105 text-sm sm:text-base whitespace-nowrap">
+            Acceso Anticipado
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="w-full max-w-7xl border-t border-white/10 pt-8 sm:pt-12 pb-8 px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 sm:mb-12">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 bg-gradient-to-br from-[#b829ff] to-[#00fff2] rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <span class="text-lg font-bold">Quenn</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            El ecosistema que conecta educación, productividad y experiencias sociales.
+          </p>
+        </div>
+        
+     
+        
+    
+       
+        
+      </div>
+      
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-white/10 text-sm text-gray-400">
+        <p>© 2025 Ecosistema Quenn. Todos los derechos reservados.</p>
+     
+        
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const observador = new IntersectionObserver((entradas) => {
+        entradas.forEach(entrada => {
+          if (entrada.isIntersecting) {
+            const delay = entrada.target.dataset.delay || 0;
+            const tipoAnimacion = entrada.target.dataset.animacion || 'visible';
+            
+            setTimeout(() => {
+              if (tipoAnimacion === 'escala') {
+                entrada.target.classList.add('animacion-escala');
+              } else if (tipoAnimacion === 'izquierda') {
+                entrada.target.classList.add('animacion-izquierda');
+              } else if (tipoAnimacion === 'derecha') {
+                entrada.target.classList.add('animacion-derecha');
+              } else {
+                entrada.target.classList.add('animacion-visible');
+              }
+            }, delay);
+            
+            observador.unobserve(entrada.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      const elementosAnimados = document.querySelectorAll('.animacion-entrada');
+      elementosAnimados.forEach(elemento => observador.observe(elemento));
+
+      const botonesAcordeon = document.querySelectorAll('.boton-acordeon');
+      botonesAcordeon.forEach(boton => {
+        boton.addEventListener('click', function() {
+          const acordeon = this.closest('.acordeon');
+          const contenido = acordeon.querySelector('.contenido-acordeon');
+          const icono = this.querySelector('.icono-acordeon');
+          const estaAbierto = contenido.style.maxHeight && contenido.style.maxHeight !== '0px';
+
+          document.querySelectorAll('.acordeon').forEach(otroAcordeon => {
+            if (otroAcordeon !== acordeon) {
+              const otroContenido = otroAcordeon.querySelector('.contenido-acordeon');
+              const otroIcono = otroAcordeon.querySelector('.icono-acordeon');
+              otroContenido.style.maxHeight = '0px';
+              otroIcono.style.transform = 'rotate(0deg)';
+            }
+          });
+
+          if (estaAbierto) {
+            contenido.style.maxHeight = '0px';
+            icono.style.transform = 'rotate(0deg)';
+          } else {
+            contenido.style.maxHeight = contenido.scrollHeight + 'px';
+            icono.style.transform = 'rotate(180deg)';
+          }
+        });
+      });
+
+      let ultimoScroll = 0;
+      const nav = document.querySelector('nav');
+      
+      window.addEventListener('scroll', () => {
+        const scrollActual = window.pageYOffset;
+        
+        if (scrollActual > ultimoScroll && scrollActual > 100) {
+          nav.style.transform = 'translateY(-100%)';
+        } else {
+          nav.style.transform = 'translateY(0)';
+        }
+        
+        ultimoScroll = scrollActual;
+      });
+
+      nav.style.transition = 'transform 0.3s ease-in-out';
+    });
+  </script>
+</body>
+</html>
